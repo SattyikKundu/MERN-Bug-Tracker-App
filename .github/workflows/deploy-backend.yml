@@ -8,6 +8,8 @@ on:
       - "server/**"
       - ".github/workflows/deploy-backend.yml"
 
+  workflow_dispatch:
+
 permissions:
   id-token: write
   contents: read
