@@ -1,4 +1,4 @@
-# MERN-Bug-Tracker-App-with-DevOps
+# MERN-Bug-Tracker-App
 
 This is a **Full-stack MERN portfolio project** that recreates the core
 workflow of a project/issue tracking application similar to ***Jira***.
@@ -177,7 +177,7 @@ project-management workflow!**
 
 ## III. App Walkthrough & Screenshots
 
-🔗 **Live Site:** [store.livedemoapp.com](https://store.livedemoapp.com) *(Right-click to open in new tab for best experience)*
+🔗 **Live Site:** [mern-bug-tracker-app.livedemoapp.com](https://mern-bug-tracker-app.livedemoapp.com/) *(Right-click to open in new tab for best experience)*
 
 <ins>**NOTE**</ins>: The screenshots in this section are intentionally arranged in roughly the same order a normal user would encounter/use the application's pages and features.
 
