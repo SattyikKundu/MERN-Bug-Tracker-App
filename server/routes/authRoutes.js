@@ -128,9 +128,9 @@ router.get("/auth/me",             // Define GET route at '/auth/me'
                                     * won't be called. This prevents Express from proceeding to the callback function.
                                     */
 
-  loadCurrentUser,         // Reload CURRENT firstName/lastName/username/email from MongoDB
+  loadCurrentUser,        // Reload CURRENT firstName/lastName/username/email from MongoDB
 
-  (req, res) => {         // Callback function runs if token is valid  
+  (req, res, next) => {   // Callback function runs if token is valid  
                           // At this point, verifyJWT has decoded the JWT and attached user data to req.user
 
     res.set("Cache-Control", "no-store");
