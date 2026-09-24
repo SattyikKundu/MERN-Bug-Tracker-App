@@ -173,6 +173,13 @@ project-management workflow!**
 |`nodemon`|Development dependency that automatically restarts the backend server after source-code changes.|
 </details>
 
+---
+### Production Deployment
+
+The *live* portfolio version of this application is deployed using AWS infrastructure. The **React**/**Vite** frontend is hosted with **Amazon S3** and **CloudFront**, while the **Node.js**/**Express** backend runs on **Amazon EC2** behind **Nginx**. The production **MongoDB** database is hosted with **MongoDB Atlas**.
+
+The local setup instructions below <ins>**do not**</ins> require AWS and can be used to run the application locally.
+
 ------------------------------------------------------------------------
 
 ## III. App Walkthrough & Screenshots
@@ -183,7 +190,7 @@ project-management workflow!**
 
 ### 1. Login and Account Registration Pages
 
-The first page visitors normally see is the ***Login*** page. Existing users can enter their **username** and **password** to access theirBugTrack workspace. 
+The first page visitors normally see is the ***Login*** page. Existing users can enter their **username** and **password** to access their BugTrack workspace. 
 There's also a **Continue with Google** button for users who want to authenticate using their Google account instead of a locally stored BugTrack password.
 
 Users who don't have an account yet can click the **Register** link near the bottom of the login card. After successfully logging in, protected
@@ -237,7 +244,7 @@ The **Notifications** sidebar link also displays the same unread-count badge use
 <img width="874" height="404" alt="5-Expanded-sidebar-with-selected-project" src="https://github.com/user-attachments/assets/5f58acd5-1042-45d3-973f-1a589862e7ef" />
 
 The top header also contains a notification bell. Clicking the bell opens a smaller notification drawer containing up to the **10 most recent notifications** for 
-a quick activity check without leaving the current page (*Btw, below image only shows 2 since this is a test account*).
+a quick activity check without leaving the current page (*the example image below shows 2 since this is a test account*).
 <img width="554" height="425" alt="6-Notification-Bell-and-opened-Notification-Drawer" src="https://github.com/user-attachments/assets/570fdd5b-5acf-479a-900e-d8ea82d489cd" />
 
 ------------------------------------------------------------------------
@@ -329,7 +336,7 @@ This gives the user a visual overview of where each bug, task, or story currentl
 As a project's issue count grows, users can narrow down the board without repeatedly requesting a new issue collection from the server.
 
 The board includes a search field that can match issue **keys**, **titles**, and **labels**, together with quick filters for **Priority**, **Issue Type**, and **Assignee**. 
-For assignment filtering, users can quickly switch to issues assigned to themselves or currently unassigned issues. Btw, it's possible that no issue cards can show up if any of the issue cards in the project's issue board does not match the filter combination (*like in the image below*).<br>
+For assignment filtering, users can quickly switch to issues assigned to themselves or currently unassigned issues. If none of the issue cards on the project's Issue Board match the selected filter combination, no issue cards will be displayed (*as shown in the image below*).<br>
 <img width="1300" alt="15-Issue-Board-with-Search-and-Filters-applied" src="https://github.com/user-attachments/assets/13d1861b-b5b8-4c66-85f9-6ac74c17fec1" />
 
 #### 7.2 Drag-and-Drop Workflow
@@ -360,7 +367,7 @@ Each issue also receives a human-readable key based on its parent project's key-
 
 ### 9. Issue Details Page
 
-Clicking an issue card---or one of the assigned issues in **My Work**---opens the ***Issue Details*** page. This page is intended to be the main place for 
+Clicking an issue card—or one of the assigned issues in **My Work**—opens the ***Issue Details*** page. This page is intended to be the main place for 
 reading and discussing one specific issue.
 
 The page shows the issue's title/key, description, status, type, priority, severity, reporter, assignee, labels, and other issue information. 
@@ -406,7 +413,7 @@ testing results, or general updates related to the issue.<br>
 The comment system also supports **nested replies**. A user can reply directly to a specific comment, and the UI visually indents nested replies so it's easier to follow which message belongs to which part of the conversation.
 
 For larger discussions, users don't have to render every reply at once. Individual branches can be opened with **Show replies**, additional replies can be loaded, 
-and an **Expand thread** option can recursively open the conversation below a selected comment. Expanded branches can also be collapsed again. Below is an example of a ***MASSIVE*** comment thread for an issue and it even has clear indication on which comment replies to what.<br>
+and an **Expand thread** option can recursively open the conversation below a selected comment. Expanded branches can also be collapsed again. Below is an example of a comment thread for an issue, with the interface visually indicating which comments are replies to other comments.<br>
 <img width="714" height="2156" alt="23-Expanded-Nested-Comment-Threat-example" src="https://github.com/user-attachments/assets/98aa6f42-7ef4-41f5-926b-2628ef8531db" />
 
 
@@ -446,13 +453,13 @@ when no local BugTrack password is stored.<br>
 The bottom portion of the Profile page contains the user's **Notification Preferences**. Rather than forcing every notification category on every user, 
 BugTrack allows individual categories to be enabled/disabled.
 
-Current preference categories include:
--   Issue assignments
--   Issue status changes
--   Comment replies
--   Project membership changes
--   Project leadership changes
--   Watched issue activity
+<ins>Current preference categories include</ins>:<br>
+• Issue assignments<br>
+• Issue status changes<br>
+• Comment replies<br>
+• Project membership changes<br>
+• Project leadership changes<br>
+• Watched issue activity<br>
 
 This lets each user decide which types of project activity are important enough to appear in their own notification inbox.
 <img width="1100" alt="27-Profile-Page-Notifications-Settings-section" src="https://github.com/user-attachments/assets/e38046f5-4f63-433d-9b13-6df2e9a7de0c" />
@@ -476,16 +483,11 @@ The application currently uses lightweight <strong>30-second polling</strong> fo
 <li>
 Archived projects are intentionally read-only. Users can continue viewing their existing issues/comments/history, but project modifications require the Project Lead to restore the project first.
 </li>
-<li>
-The current notification system is <strong>in-app only</strong>. Email, SMS, push notifications, and external messaging integrations are not part of the current version.
-</li>
-<li>
-The project currently focuses on the MERN application itself. The larger DevOps portion of the portfolio project—including automated testing, CI/CD, containerization, and cloud deployment—is planned as part of a later development phase.
-</li>
+<li>The current notification system is <strong>in-app only</strong>. Email, SMS, push notifications, and external messaging integrations are not part of the current version.</li>
 </ul>
 </details>
 
-------------------------------------------------------------------------
+---
 
 ## V. Steps to Use App Locally
 
@@ -515,40 +517,19 @@ A running <strong>MongoDB</strong> database (local MongoDB or a compatible hoste
 </li>
 </ul>
 </li>
-<li>
-<strong><ins>Clone (or download) the repository locally</ins>:</strong>
-<ul>
-<li>
-<ins>Run the Git clone command</ins>:<pre><code>git clone [YOUR FINAL GITHUB REPOSITORY URL]</code></pre>
-</li>
-<li>
-<ins>Change into the project folder</ins>:<pre><code>cd Bug-Tracker-App-with-DevOps</code></pre>
-</li>
-</ul>
+<li> 
+<strong><ins>Clone (or download) the repository locally</ins>:</strong> 
+<ul> 
+<li> <ins>Run the Git clone command</ins>:<pre><code>git clone https://github.com/SattyikKundu/MERN-Bug-Tracker-App.git</code></pre></li> 
+<li> <ins>Change into the project folder</ins>:<pre><code>cd MERN-Bug-Tracker-App</code></pre></li> 
+</ul> 
 </li>
 <li>
 <strong><ins>Install packages for both the Client and Server</ins>:</strong>
 <ul>
-<li>
-Both <code>/client</code> and <code>/server</code> contain their own <code>package.json</code> files.
-</li>
-<li>
-<ins>Install the client packages</ins>: 
-<pre>
-<code>
-cd ../client 
-npm install
-</code>
-</pre>
-</li>
-<li><ins>Then install the server packages</ins>:
-<pre>
-<code>
-cd ../server
-npm install
-</code>
-</pre>
-</li>
+<li>Both <code>/client</code> and <code>/server</code> contain their own <code>package.json</code> files.</li>
+<li> <ins>Install the client packages</ins>: <pre> <code>cd client npm install</code> </pre> </li> 
+<li> <ins>Then install the server packages</ins>: <pre> <code>cd ../server npm install</code> </pre> </li>
 </ul>
 </li>
 <li>
@@ -654,33 +635,16 @@ This provides a convenient way to inspect many of the REST endpoints and manuall
 
 ------------------------------------------------------------------------
 
-## VI. Features / DevOps Work to be Added Later
+## VI. Potential Future Enhancements & DevOps Work
 
-<details>
-<summary>
-<strong>Future Features/DevOps List (Click to Expand):</strong>
-</summary>
-<br>
-<ul>
-<li>
-Add automated end-to-end browser testing using <strong>Selenium</strong> to test important user workflows such as login, project creation, issue creation, workflow movement, and comments.
-</li>
-<li>
-Add a <strong>Jenkins</strong> CI/CD pipeline so automated checks/build steps can run when application changes are prepared for deployment.
-</li>
-<li>
-Containerize the client/server application using <strong>Docker</strong> so the development/deployment environment can be reproduced more consistently.
-</li>
-<li>
-Move the production MongoDB database to <strong>MongoDB Atlas</strong>.
-</li>
-<li>
-Deploy the application to <strong>AWS</strong>, beginning with a straightforward deployment approach and later considering services such as ECR/ECS as the project's DevOps architecture grows.
-</li>
-<li>
-Potentially expand the issue-tracking feature set later with more advanced project-management concepts if they add meaningful portfolio value without turning this smaller Jira-inspired application into an unnecessarily large clone.
-</li>
-</ul>
+<details> 
+    <summary> <strong>Potential Future Enhancements & DevOps Work (Click to Expand):</strong> </summary> <br> 
+    <ul> 
+        <li> Add automated end-to-end browser testing using <strong>Selenium</strong> to test important user workflows such as login, project creation, issue creation, workflow movement, and comments. </li> 
+        <li> Add a <strong>Jenkins</strong> CI/CD pipeline so automated checks/build steps can run when application changes are prepared for deployment. </li> 
+        <li> Containerize the client/server application using <strong>Docker</strong> so the development/deployment environment can be reproduced more consistently. </li> 
+        <li> Potentially expand the issue-tracking feature set later with more advanced project-management concepts if they add meaningful portfolio value without turning this smaller Jira-inspired application into an unnecessarily large clone. </li> 
+    </ul> 
 </details>
 
 ------------------------------------------------------------------------
