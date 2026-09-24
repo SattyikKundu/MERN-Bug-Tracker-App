@@ -483,7 +483,11 @@ The application currently uses lightweight <strong>30-second polling</strong> fo
 <li>
 Archived projects are intentionally read-only. Users can continue viewing their existing issues/comments/history, but project modifications require the Project Lead to restore the project first.
 </li>
-<li>The current notification system is <strong>in-app only</strong>. Email, SMS, push notifications, and external messaging integrations are not part of the current version.</li>
+<li>
+The current notification system is <strong>in-app only</strong>. Email, SMS, push notifications, and external messaging integrations are not part of the current version.
+</li>
+<li> Google OAuth authentication is not currently enabled in the live application. The Google login and registration buttons are therefore disabled, while local username/password authentication remains fully available. 
+</li>
 </ul>
 </details>
 

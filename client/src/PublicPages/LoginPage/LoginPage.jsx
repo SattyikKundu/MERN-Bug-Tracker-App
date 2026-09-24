@@ -187,6 +187,7 @@ const LoginPage = () => {
             className = "google-login-button"
             type      = "button"
             onClick   = {handleGoogleLogin}
+            disabled
           >
             <span className="google-letter">
               G
